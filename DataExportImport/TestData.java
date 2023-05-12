@@ -1,42 +1,23 @@
 package DataExportImport;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
+
+import static DataExportImport.IOdata.readFile;
+
 //import java.io.*;
 
 public class TestData {
-    private String txt="";
+    private String txt = GetQuestionsString();
 
-    TestData() {
-        txt = "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
-                "а. Трудность, скорость, болдеринг\n" +
-                "б. Скорость, двоеборье\n" +
-                "в. Трудность, скорость, болдеринг, двоеборье\n" +
-                "Answer: в.\n" +
-                "\n" +
-                "2. Регламенты соревнований I и II класса размещаются на официальном сайте Федерации не позднее, чем\n" +
-                "а. 1 месяц\n" +
-                "б. 40 дней\n" +
-                "в. 2 недели\n" +
-                "Answer: б.\n" +
-                "\n" +
-                "3. Тренеры и представители команд обязаны подчиняться требованиям судей, не вмешиваясь в действия судейской коллегии\n" +
-                "а. да\n" +
-                "б. нет\n" +
-                "Answer: а.\n" +
-                "Difficulty: Easy.\n" +
-                "\n";
-    }
+    public TestData() {}
 
-    TestData(String _path) {
-        txt = GetDataFromFile(_path);
+    public TestData(String _path) {
+        txt = readFile(_path);
     }
 
     public String GetQuestionString(){
-        return  "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
+        return  "Question type: Multiple Choice\n" +
+                "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
                 "а. Трудность, скорость, болдеринг\n" +
                 "б. Скорость, двоеборье\n" +
                 "в. Трудность, скорость, болдеринг, двоеборье\n" +
@@ -45,18 +26,23 @@ public class TestData {
     }
 
     public String GetQuestionsString(){
-        return  "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
+        return  "Question type: Multiple Choice\n" +
+                "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
                 "а. Трудность, скорость, болдеринг\n" +
                 "б. Скорость, двоеборье\n" +
                 "в. Трудность, скорость, болдеринг, двоеборье\n" +
                 "Answer: в.\n" +
                 "\n" +
+                "Question type: Multiple Choice\n" +
+                "Question title: Регламенты\n" +
+                "Question uuid: 6388e9a8-d6f1-4b47-8e6e-19d63c91d473\n" +
                 "2. Регламенты соревнований I и II класса размещаются на официальном сайте Федерации не позднее, чем\n" +
                 "а. 1 месяц\n" +
                 "б. 40 дней\n" +
                 "в. 2 недели\n" +
                 "Answer: б.\n" +
                 "\n" +
+                "Question type: Multiple Choice\n" +
                 "3. Тренеры и представители команд обязаны подчиняться требованиям судей, не вмешиваясь в действия судейской коллегии\n" +
                 "а. да\n" +
                 "б. нет\n" +
@@ -66,37 +52,16 @@ public class TestData {
     }
 
     public Question GetQuestionObject(){
-        HashMap<String, String> answers = new HashMap<String,String>();
+        HashMap<String, String> answers = new HashMap<String, String>();
         answers.put("a","Трудность, скорость, болдеринг");
         answers.put("б","Скорость, двоеборье");
         answers.put("в","Трудность, скорость, болдеринг, двоеборье");
 
-        HashMap<String, String> rightAnswers = new HashMap<String,String>();
-        rightAnswers.put("в", answers.get("в"));
-
-        return  new Question(1,
-                             "Соревнования проводятся в следующих спортивных дисциплинах",
+        return  new QuestionMultipleChoice(1,
+                            "Соревнования проводятся в следующих спортивных дисциплинах",
                             answers,
-                            rightAnswers);
-    }
-
-    private static String GetDataFromFile(String path){
-        String txt1="";
-        try {
-            File file = new File(path);
-            FileReader fr = new FileReader(file);
-            BufferedReader reader = new BufferedReader(fr);
-            /*String str1;
-            List<String> str1 =reader.readAllLines(@NotNull  Path path, @NotNull  Charset cs);*/
-            txt1 = reader.readLine();
-            while (txt1 != null) {
-                //System.out.println(txt);
-                txt1 = reader.readLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return txt1;
+                            "в",
+                            Difficulty.EASY);
     }
 
     @Override
