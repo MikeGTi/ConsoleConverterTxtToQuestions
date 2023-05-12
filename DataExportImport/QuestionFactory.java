@@ -21,18 +21,18 @@ public class QuestionFactory {
     private int multipleSelectionQueCount = 0;
 
     public Question CreateQuestion(QuestionTypes _type) {
-        Question res = null;
+        Question res;
 
         switch (_type) {
-            case MultipleSelection:
+            case MultipleSelection -> {
                 multipleSelectionQueCount++;
                 res = new QuestionMultipleSelection();
-                break;
-            default:
+            }
+            default -> {
                 multipleChoiceQueCount++;
                 res = new QuestionMultipleChoice();
-                break;
-                //throw new IllegalArgumentException("Wrong question type:" + type);
+            }
+            //throw new IllegalArgumentException("Wrong question type:" + type);
         }
         return res;
     }

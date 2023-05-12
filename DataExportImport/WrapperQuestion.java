@@ -2,10 +2,11 @@ package DataExportImport;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class WrapperQuestion {
 
-    private ArrayList<? extends Question> questions = new ArrayList<>();
+    private final ArrayList<? extends Question> questions;
 
     private String wrappedQuestions = "";
 
@@ -28,20 +29,21 @@ public class WrapperQuestion {
 
     private String wrapTxtAsHTML(String _title, String _txt){
         StringBuilder stringBuilder = new StringBuilder();
+        //.append( "<h1>List of questions</h1>\n" );
+        //.append( "<ul>\n" );
+        //.append( "<div>" + _txt + "</div>\n" )
         stringBuilder
-                .append( "<!doctype html>\n" )
-                .append( "<html lang='ru'>\n" )
-                .append( "<head>\n" )
-                .append( "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" )
-                .append( "<title>" + _title + "</title>\n" )
-                .append( "</head>\n" )
-                .append( "<body>\n" )
-              //.append( "<h1>List of questions</h1>\n" );
-              //.append( "<ul>\n" );
-              //.append( "<div>" + _txt + "</div>\n" )
-                .append( _txt + "\n" )
-              //.append( "<li>" + context + "</li>\n" );
-              //.append( "</ul>\n" );
+                .append("<!doctype html>\n")
+                .append("<html lang='ru'>\n")
+                .append("<head>\n")
+                .append("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n")
+                .append("<title>")
+                .append(_title)
+                .append("</title>\n")
+                .append("</head>\n")
+                .append("<body>\n")
+                .append(_txt)
+                .append("\n")
                 .append( "</body>\n" )
                 .append( "</html>" );
 
@@ -51,7 +53,7 @@ public class WrapperQuestion {
     private String wrapQuestionAsHTML(Question question){
         //need to be recoded
         String element = "radio";
-        if (question.getType() == "Multiple Selection") element = "checkbox";
+        if (Objects.equals(question.getType(), "Multiple Selection")) element = "checkbox";
 
         StringBuilder  stringBuilder = new StringBuilder();
         stringBuilder
