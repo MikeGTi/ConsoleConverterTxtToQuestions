@@ -1,16 +1,16 @@
-package DataExportImport;
+package BusinessLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
-public class WrapperQuestion {
+
+public class WrapperQuestions {
 
     private final ArrayList<? extends Question> questions;
 
     private String wrappedQuestions = "";
 
-    public WrapperQuestion(ArrayList<? extends Question> questions) {
+    public WrapperQuestions(ArrayList<? extends Question> questions) {
         this.questions = questions;
     }
 
@@ -51,9 +51,6 @@ public class WrapperQuestion {
     }
 
     private String wrapQuestionAsHTML(Question question){
-        //need to be recoded
-        String element = "radio";
-        if (Objects.equals(question.getType(), "Multiple Selection")) element = "checkbox";
 
         StringBuilder  stringBuilder = new StringBuilder();
         stringBuilder
@@ -62,7 +59,7 @@ public class WrapperQuestion {
                 .append("<td valign=\"top\">").append("<b>" + question.getNumber() + ".</b>").append("</td>\n")
                 .append("<td valign=\"top\">\n")
                 .append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">" + question.getStem() + "</div>\n")
-                .append(getHtmlAnswers(question.getAnswers(), question.getRightAnswers(), Integer.toString(question.getNumber())).replaceAll("dummyElementType",element))
+                .append(getHtmlAnswers(question.getAnswers(), question.getRightAnswers(), Integer.toString(question.getNumber())).replaceAll("dummyElementType",getElementName(question.getType())))
                 //.append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">Difficulty: " + question.getDifficulty() + "</div>\n")
                 .append("</td>\n")
                 .append("</tr>\n")
@@ -71,21 +68,44 @@ public class WrapperQuestion {
         return stringBuilder.toString();
     }
 
-    private String getHtmlAnswers(HashMap<String, String> answers, HashMap<String, String> rightAnswers, String questionNumber){
+    private String getHtmlAnswers(HashMap<String, String> answers, Character[] rightAnswers, String questionNumber){
         StringBuilder  stringBuilder = new StringBuilder();
         for(HashMap.Entry<String, String> entry : answers.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            String isRightAnswer = rightAnswers.containsKey(key) ? "1" : "0";
 
             stringBuilder
                 .append("<table border=\"0\">\n")
                 .append("<tr>\n")
-                .append("<td valign=\"top\" nowrap=\"nowrap\"><input type=\"dummyElementType\" name=\"Ans" + questionNumber + "\" value=\"" + isRightAnswer + "\" /><b>"+ key +".</b></td>\n")
+                .append("<td valign=\"top\" nowrap=\"nowrap\"><input type=\"dummyElementType\" name=\"Ans")
+                .append(questionNumber)
+                .append("\" value=\"").append(isRightAnswer(answers, rightAnswers)).append("\" />")
+                .append("<b>"+ key +".</b></td>\n")
                 .append("<td><div><span style=\"font-family: Calibri; font-size: 11pt;\">"+ value +"</span><br /></div></td>\n")
                 .append("</tr>\n")
                 .append("</table>\n");
         }
         return stringBuilder.toString();
     }
+
+    private String isRightAnswer(HashMap<String, String> answers, Character[] rightAnswers){
+        for (Character chr: rightAnswers) {
+            if (answers.containsKey(chr)) return "1";
+        }
+        return "0";
+    }
+
+    private String getElementName(QuestionTypes queType){
+        String elementName;
+        switch (queType) {
+            case MultipleSelection -> {
+                elementName = "checkbox";
+            }
+            default -> {
+                elementName = "radio";
+            }
+        }
+        return elementName;
+    }
+
 }
