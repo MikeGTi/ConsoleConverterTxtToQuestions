@@ -5,10 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class IOdata {
-    public static void main(String[] args) {
-        /*String[] questions = { new TestData().GetQuestionString(), new TestData().GetQuestionString(), new TestData().GetQuestionString() };
-        writeObjectToFile("out\\questions.bin", questions);*/
-    }
 
     public static void writeObjectToFile(String _path, Object _object){
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(_path))){

@@ -90,7 +90,7 @@ public class WrapperQuestions {
 
     private String isRightAnswer(HashMap<String, String> answers, Character[] rightAnswers){
         for (Character chr: rightAnswers) {
-            if (answers.containsKey(chr)) return "1";
+            if (answers.containsKey(chr.toString())) return "1";
         }
         return "0";
     }
@@ -101,8 +101,21 @@ public class WrapperQuestions {
             case MultipleSelection -> {
                 elementName = "checkbox";
             }
-            default -> {
+            case MultipleChoice -> {
                 elementName = "radio";
+            }
+            case TrueFalse -> {
+                elementName = "radio";
+            }
+            case TextEntry -> {
+
+            }
+            case TextEntryWithDropdown -> {
+            }
+            case Essay -> {
+            }
+            default -> {
+                elementName = "None";
             }
         }
         return elementName;

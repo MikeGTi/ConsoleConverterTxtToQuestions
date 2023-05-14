@@ -1,17 +1,23 @@
-package DataExportImport;
+package BusinessLayer;
 
 import java.util.HashMap;
-
 import static DataExportImport.IOdata.readFile;
 
-//import java.io.*;
+public class TestQuestionData {
 
-public class TestData {
+    public static void main(String[] args) {
+
+        TestQuestionData testQuestionData = new TestQuestionData();
+        Question questionTest = testQuestionData.initQuestionObject(new QuestionFactory().newQuestion(QuestionTypes.MultipleChoice));
+        System.out.println(questionTest.toString());
+
+    }
+
     private String txt = GetQuestionsString();
 
-    public TestData() {}
+    public TestQuestionData() {}
 
-    public TestData(String _path) {
+    public TestQuestionData(String _path) {
         txt = readFile(_path);
     }
 
@@ -48,20 +54,31 @@ public class TestData {
                 "б. нет\n" +
                 "Answer: а.\n" +
                 "Difficulty: Easy.\n" +
-                "\n";
+                "\n" +
+                "Question type: Multiple Selection\n" +
+                "4. Тренеры и представители команд обязаны подчиняться требованиям судей, не вмешиваясь в действия судейской коллегии\n" +
+                "а. да\n" +
+                "б. нет\n" +
+                "Answer: а, б.\n" +
+                "Difficulty: Easy.\n";
+
     }
 
-    public Question GetQuestionObject(){
+    public <T extends Question> T initQuestionObject(T question){
+        //T question = new QuestionFactory().newQuestion(questionTypes);
         HashMap<String, String> answers = new HashMap<String, String>();
-        answers.put("a","Трудность, скорость, болдеринг");
-        answers.put("б","Скорость, двоеборье");
-        answers.put("в","Трудность, скорость, болдеринг, двоеборье");
+                                answers.put("a","Трудность, скорость, болдеринг");
+                                answers.put("б","Скорость, двоеборье");
+                                answers.put("в","Трудность, скорость, болдеринг, двоеборье");
 
-        return  new QuestionMultipleChoice(1,
-                            "Соревнования проводятся в следующих спортивных дисциплинах",
-                            answers,
-                            "в",
-                            Difficulty.EASY);
+        question.setNumber(1);
+        question.setStem("Соревнования проводятся в следующих спортивных дисциплинах");
+        question.setAnswers(answers);
+        question.setRightAnswers(new Character[]{'а','в'});
+        if (question.getType() == QuestionTypes.MultipleChoice) question.setRightAnswers(new Character[]{'а'});
+        question.setDifficulty(Difficulty.EASY);
+
+        return question;
     }
 
     @Override

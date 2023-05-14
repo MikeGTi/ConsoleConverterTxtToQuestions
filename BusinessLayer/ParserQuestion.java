@@ -1,39 +1,45 @@
-package DataExportImport;
+package BusinessLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static DataExportImport.IOdata.readFile;
-
 public class ParserQuestion {
-    public static  ArrayList<? extends Question> parseFromFile(String _path){
-        return GetQuestionsObjectsList(GetQuestionsTxtBlocks(readFile(_path)));
+
+    private String text;
+
+    public ParserQuestion(String text) {
+        this.text = text;
     }
 
-    public static  ArrayList<? extends Question> parseFromTxt(String _txt){
-        return GetQuestionsObjectsList(GetQuestionsTxtBlocks(_txt));
+    public ArrayList<? extends Question> getList(){
+        return getQuestionsObjectsList(GetQuestionsTextBlocks());
     }
 
-    private static String[] GetQuestionsTxtBlocks(String _txt){
-        String[] questionsStr = GetMatches(Pattern.compile(GetRegexPatternsForQuestions().get("Questions"), Pattern.MULTILINE), _txt, 1).toArray(new String[0]);
-        if (questionsStr.length == 0) {
-            questionsStr = GetMatches(Pattern.compile(GetRegexPatternsForQuestions().get("Questions wo 'Question type'"), Pattern.MULTILINE), _txt, 1).toArray(new String[0]);
+    private String[] GetQuestionsTextBlocks(){
+        String[] questionTextBlocks =
+                GetMatches(Pattern.compile(getRegexPatternsForQuestions().get("Questions"), Pattern.MULTILINE), this.text, 1).toArray(new String[0]);
+
+        if (questionTextBlocks.length == 0) {
+            questionTextBlocks =
+                GetMatches(Pattern.compile(getRegexPatternsForQuestions().get("Questions wo 'Question type'"), Pattern.MULTILINE), this.text, 1).toArray(new String[0]);
         }
-        return questionsStr;
+
+        return questionTextBlocks;
     }
 
-    private static ArrayList<? extends Question> GetQuestionsObjectsList(String[] questionsTxt) {
+    private static ArrayList<? extends Question> getQuestionsObjectsList(String[] questionTextBlocks) {
         ArrayList<Question> result = new ArrayList<>();
-        HashMap<String, String> quePatterns = GetRegexPatternsForQuestions();
-        DataExportImport.QuestionFactory queFactory = new QuestionFactory();
+        HashMap<String, String> quePatterns = getRegexPatternsForQuestions();
+        QuestionFactory queFactory = new QuestionFactory();
 
-        for (String queItm: questionsTxt) {
-            Question que = queFactory.CreateQuestion(
+        for (String queItm: questionTextBlocks) {
+            Question que = queFactory.newQuestion(
                                                     QuestionTypes.valueOf(
                                                         (GetMatch(GetMatches(Pattern.compile(quePatterns.get("Question type"),Pattern.MULTILINE),queItm,1),0, "Multiple Choice")).replaceAll("\\s+","")));
-
+            //set fields
             que.setTitle(GetMatch(GetMatches(Pattern.compile(quePatterns.get("Question title"),Pattern.MULTILINE),queItm,1),0,""));
             que.setUUID(GetMatch(GetMatches(Pattern.compile(quePatterns.get("Question uuid"),Pattern.MULTILINE),queItm,1),0,""));
 
@@ -42,13 +48,19 @@ public class ParserQuestion {
             que.setStem(GetMatch(GetMatches(Pattern.compile(quePatterns.get("Question stem"),Pattern.MULTILINE),queItm,1),0,""));
             que.setAnswers(GetHashMap(GetMatches(Pattern.compile(quePatterns.get("Question answers symbols"),Pattern.MULTILINE),queItm,1),
                                       GetMatches(Pattern.compile(quePatterns.get("Question answers stem"),Pattern.MULTILINE),queItm,1)));
-            que.setRightAnswers(GetHashMap(GetMatches(Pattern.compile(quePatterns.get("Question answers right symbols"),Pattern.MULTILINE),queItm,1),
-                                           GetMatches(Pattern.compile(quePatterns.get("Question answers right stem"),Pattern.MULTILINE),queItm,1)));
+            que.setRightAnswers(getCharacterArray(GetMatches(Pattern.compile(quePatterns.get("Question answers right"),Pattern.MULTILINE),queItm,1).get(0)));
             que.setDifficulty(Difficulty.valueOf(GetMatch(GetMatches(Pattern.compile(quePatterns.get("Question difficulty"),Pattern.MULTILINE),queItm,1),0,"Easy").toUpperCase()));
 
             result.add(que);
         }
         return result;
+    }
+
+    private static Character[] getCharacterArray(String string){
+        String string1 = string.replaceAll("[!\\D] ","");
+        //string1 = Arrays.toString(string1.split(","));
+        Character[] charObjectArray = string1.chars().mapToObj(c -> (char)c).toArray(Character[]::new);
+        return charObjectArray;
     }
 
     private static <K, V> HashMap<K, V> GetHashMap(ArrayList<K> l1, ArrayList<V> l2){
@@ -60,11 +72,11 @@ public class ParserQuestion {
     }
 
     private static ArrayList<String> GetMatches(Pattern _pattern, String _txt, int _groupNumber){
-        var matcher1 = _pattern.matcher(_txt);
-        var matches = new ArrayList<String>();
-        while (matcher1.find()) {
+        Matcher matcher = _pattern.matcher(_txt);
+        ArrayList<String> matches = new ArrayList<String>();
+        while (matcher.find()) {
             try {
-                matches.add(matcher1.group(_groupNumber));
+                matches.add(matcher.group(_groupNumber));
             } catch (IndexOutOfBoundsException e) {
                 matches.add("");
             }
@@ -73,16 +85,17 @@ public class ParserQuestion {
     }
 
     private static String GetMatch(ArrayList<String> _matches, int _index, String _defaultValue) {
-        String res = _defaultValue;
+        String res;
         try{
             res = _matches.get(_index);
         }catch(IndexOutOfBoundsException e) {
+            res = _defaultValue;
             //System.err.println("Match not found");
         }
         return res;
     }
 
-    private static HashMap<String, String> GetRegexPatternsForQuestions() {
+    private static HashMap<String, String> getRegexPatternsForQuestions() {
         final HashMap<String, String> patterns = new HashMap<>();
 
         //EOF $(?![\r\n])
@@ -100,10 +113,10 @@ public class ParserQuestion {
         patterns.put("Question answers", "(^[À-ÿA-z]{1}\\..*)");
         patterns.put("Question answers symbols", "(^[À-ÿA-z]{1})\\.");
         patterns.put("Question answers stem", "^[À-ÿA-z]{1}\\.(.*)");
-        patterns.put("Question answers right", "^[Aa]nswer:(.*)");
-        patterns.put("Question answers right symbols", "^[Aa]nswer:.*([À-ÿA-z]{1})\\.");
-        patterns.put("Question answers right stem", "^[Aa]nswer:.*[À-ÿA-z]{1}\\.(.*)");
-        patterns.put("Question difficulty", "^[Dd]ifficulty:(.*)");
+        patterns.put("Question answers right", "^[Aa]nswer:[\\s]{0,}(.*)\\.");
+        patterns.put("Question answers right stem", "^[Aa]nswer:[\\s]{0,}[A-zÀ-ÿ][,|\\.](.*)");
+        patterns.put("Question answers right symbols", "^[Aa]nswer:[\\s]{0,}([A-zÀ-ÿ])[,|\\.]");
+        patterns.put("Question difficulty", "^[Dd]ifficulty:[\\s]{0,}(.*)[\\.]{0,}");
 
         return patterns;
     }

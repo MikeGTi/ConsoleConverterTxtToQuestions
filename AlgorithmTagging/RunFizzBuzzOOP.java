@@ -111,8 +111,6 @@ class EqualCondition extends Condition<String> {
     }
 }
 
-
-
 class AndStrategy<T> extends Strategy<T> {
     private ArrayList<ITruthy> conditionsOrStrategies;
     AndStrategy(ArrayList<ITruthy> _conditionsOrStrategies) {

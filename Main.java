@@ -1,7 +1,8 @@
-import DataExportImport.*;
+import BusinessLayer.*;
+import DataExportImport.IOdata;
+import DataExportImport.Printer;
 
-import java.sql.Wrapper;
-import java.util.*;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,26 +18,26 @@ public class Main {
         System.out.println("\n");*/
 
         //---------------------------------------------------------------------
+
+
+
         //IO block
-        String txt1 = new TestData().GetQuestionsString();
+        String txt1 = new TestQuestionData().GetQuestionsString();
         //System.out.println(txt1);
 
-        String txt2 = new TestData("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\билеты_тест.txt").toString();
+        String txt2 = new TestQuestionData("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\билеты_тест.txt").toString();
         if (txt2 == null) return;
-        String txt = txt2;
+        String txt = txt1;
 
-        ArrayList<? extends Question> questions = ParserQuestion.parseFromFile("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\билеты_тест.txt");
-        //print objects
+        ArrayList<? extends Question> questions = new ParserQuestion(txt).getList();
         questions.forEach(question -> new Printer(question.toString()).printLn());
+        WrapperQuestions wrapperQuestions = new WrapperQuestions(questions);
+        wrapperQuestions.wrapHTML("Questions assessment");
 
-        WrapperQuestion wrapperQuestion = new WrapperQuestion(questions);
-
-        wrapperQuestion.wrapHTML("Questions assessment");
-
-        new Printer(wrapperQuestion.toString()).printLn();
+        //new Printer(wrapperQuestions.toString()).printLn();
 
         IOdata ioData =  new IOdata();
-        ioData.writeFile("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\test1.html",wrapperQuestion.toString());
+        ioData.writeFile("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\test1.html", wrapperQuestions.toString());
 
 
         //IOdata.writeObjectToFile("out\\questions.bin", questions);

@@ -4,6 +4,13 @@ import java.lang.reflect.Field;
 import java.lang.Class;
 
 public class Printer {
+    /*public static void main(String[] args) {
+        Printer printer = new Printer("");
+        //QuestionMultipleChoice question = (QuestionMultipleChoice) new QuestionFactory().newQuestion(QuestionTypes.MultipleChoice);
+        QuestionMultipleChoice question2 = new TestQuestionData().getQuestionObject(new QuestionMultipleChoice());
+        printer.printAsHtml(question2);
+    }*/
+
     private String context;
 
     public Printer(String _context) {
@@ -16,6 +23,7 @@ public class Printer {
         for (Field field: fields) {
             try {
                 Object value = field.get(_object);
+                System.out.println(value.toString());
                 // print value as html
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
