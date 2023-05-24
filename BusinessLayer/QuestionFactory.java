@@ -5,20 +5,20 @@ public class QuestionFactory {
     private int multipleSelectionQueCount = 0;
 
     public <T extends Question> T newQuestion(QuestionTypes _type) {
-        T res;
+        T result;
 
         switch (_type) {
             case MultipleSelection -> {
                 multipleSelectionQueCount++;
-                res = (T) new QuestionMultipleSelection();
+                result = (T) new QuestionMultipleSelection();
             }
             default -> {
                 multipleChoiceQueCount++;
-                res = (T) new QuestionMultipleChoice();
+                result = (T) new QuestionMultipleChoice();
             }
             //throw new IllegalArgumentException("Wrong question type:" + type);
         }
-        return res;
+        return result;
     }
 
 }

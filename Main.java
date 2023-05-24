@@ -1,6 +1,9 @@
-import BusinessLayer.*;
+import BusinessLayer.ParserQuestion;
+import BusinessLayer.Question;
+import BusinessLayer.WrapperQuestions;
 import DataExportImport.IOdata;
 import DataExportImport.Printer;
+import TestPackage.QuestionDataForTesting;
 
 import java.util.ArrayList;
 
@@ -22,22 +25,22 @@ public class Main {
 
 
         //IO block
-        String txt1 = new TestQuestionData().GetQuestionsString();
+        String txt1 = new QuestionDataForTesting().GetQuestionsString();
         //System.out.println(txt1);
 
-        String txt2 = new TestQuestionData("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\билеты_тест.txt").toString();
+        String txt2 = new QuestionDataForTesting("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt").toString();
         if (txt2 == null) return;
         String txt = txt1;
 
         ArrayList<? extends Question> questions = new ParserQuestion(txt).getList();
         questions.forEach(question -> new Printer(question.toString()).printLn());
         WrapperQuestions wrapperQuestions = new WrapperQuestions(questions);
-        wrapperQuestions.wrapHTML("Questions assessment");
+                         wrapperQuestions.toHTML("Questions assessment");
 
         //new Printer(wrapperQuestions.toString()).printLn();
 
         IOdata ioData =  new IOdata();
-        ioData.writeFile("D:\\JavaProjects\\CreateQuestionsTest\\Task\\Input\\test1.html", wrapperQuestions.toString());
+        ioData.writeFile("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Output\\test1.html", wrapperQuestions.toString());
 
 
         //IOdata.writeObjectToFile("out\\questions.bin", questions);

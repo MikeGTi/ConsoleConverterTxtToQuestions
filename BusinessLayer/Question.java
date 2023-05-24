@@ -1,23 +1,38 @@
 package BusinessLayer;
 
+import BusinessLayer.HtmlSerializer.HTMLelement;
+
 import java.io.Serial;
 import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
-public abstract class Question implements Serializable {
+public abstract class Question implements Serializable, HtmlWrappable {
     @Serial
     private static final long serialVersionUID = -5925620994711686560L;
+
     static int counter = 1;
+
     private String QueUUID = UUID.randomUUID().toString();
+
     private final QuestionTypes QueType;
+
+    @HTMLelement(key = "Question number")
     private int QueNumber;
+
     private String QueTitle = "";
+
+    @HTMLelement(key = "Question stem")
     private String Stem = "";
+
+    @HTMLelement(key = "Question answers")
     private HashMap<String, String> Answers;
+
+    @HTMLelement(key = "Question right answers")
     private Character[] RightAnswers;
+
+    @HTMLelement(key = "Question difficulty")
     private BusinessLayer.Difficulty Difficulty;
 
     Question(QuestionTypes _queType){
@@ -65,7 +80,7 @@ public abstract class Question implements Serializable {
         Stem = _stem.trim();
     }
 
-    public HashMap<String, String> getAnswers() {
+    public HashMap<String,String> getAnswers() {
         return Answers;
     }
 
@@ -105,42 +120,6 @@ public abstract class Question implements Serializable {
         Difficulty = _difficulty;
     }
 
-    public String fieldsToString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        String newLine = System.getProperty("line.separator");
-
-        stringBuilder.append( this.getClass().getName() );
-        stringBuilder.append( " Object {" );
-        stringBuilder.append(newLine);
-
-        //determine fields declared in this class only (no fields of superclass)
-        Class<?> current = this.getClass();
-        /*while(current.getSuperclass()!=null){ // we don't want to process Object.class
-            // do something with current's fields
-            current = current.getSuperclass();
-        }*/
-        Field[] fields = current.getClass().getDeclaredFields();
-        //Field[] fields = this.getClass().getDeclaredFields();
-        //Field[] fields = this.getClass().getFields();
-
-        //print field names paired with their values
-        for ( Field field : fields  ) {
-            stringBuilder.append("  ");
-            try {
-                //field.setAccessible(true);
-                stringBuilder.append( field.getName() );
-                stringBuilder.append(": ");
-                //requires access to private field:
-                stringBuilder.append( field.get(this) );
-            } catch ( IllegalAccessException ex ) {
-                System.out.println(ex);
-            }
-            stringBuilder.append(newLine);
-        }
-        stringBuilder.append("}");
-
-        return stringBuilder.toString();
-    }
 
     @Override
     public String toString(){
@@ -167,6 +146,57 @@ public abstract class Question implements Serializable {
         return Objects.hash(QueType, getStem(), getAnswers(), getRightAnswers());
     }
 
+    @Override
+    public HashMap<String, String> getHtmlTagFieldMap(){
+        HashMap<String, String> htmlTagsMap = new HashMap<>();
+
+        htmlTagsMap.put("Question number","<table border=\"0\" cellpadding=\"5\">\n" + "<tr>\n" + "<td valign=\"top\">" + "<b>" + "dummyValue" + ".</b>" + "</td>\n");
+        htmlTagsMap.put("Question stem","<td valign=\"top\">\n" + "<div><span style=\"font-family: Calibri; font-size: 11pt;\">" + "dummyValue" + "</div>\n");
+
+        return htmlTagsMap;
+    }
+
+    @Override
+    public String toHTML() {
+        StringBuilder  stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("<table border=\"0\" cellpadding=\"5\">\n")
+                .append("<tr>\n")
+                .append("<td valign=\"top\">").append("<b>" + this.getNumber() + ".</b>").append("</td>\n")
+                .append("<td valign=\"top\">\n")
+                .append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">" + this.getStem() + "</div>\n")
+                .append(getHtmlAnswers(this.getAnswers(), this.getRightAnswers(), Integer.toString(this.getNumber())).replaceAll("dummyElementType", "radio"))
+                //.append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">Difficulty: " + question.getDifficulty() + "</div>\n")
+                .append("</td>\n")
+                .append("</tr>\n")
+                .append("</table>\n");
+
+        return stringBuilder.toString();
+    }
+
+    @HTMLelement(key = "Answers")
+    public String getHtmlAnswers(HashMap<String, String> answers, Character[] rightAnswers, String questionNumber){
+        StringBuilder  stringBuilder = new StringBuilder();
+        for(HashMap.Entry<String, String> entry : answers.entrySet()) {
+            stringBuilder
+                    .append("<table border=\"0\">\n")
+                    .append("<tr>\n")
+                    .append("<td valign=\"top\" nowrap=\"nowrap\"><input type=\"dummyElementType\" name=\"Ans").append(questionNumber).append("\" value=\"").append(isRightAnswer(answers, rightAnswers)).append("\" />")
+                    .append("<b>"+ entry.getKey() +".</b></td>\n")
+                    .append("<td><div><span style=\"font-family: Calibri; font-size: 11pt;\">"+ entry.getValue() +"</span><br /></div></td>\n")
+                    .append("</tr>\n")
+                    .append("</table>\n");
+        }
+        return stringBuilder.toString();
+    }
+
+    private String isRightAnswer(HashMap<String, String> answers, Character[] rightAnswers){
+        for (Character chr: rightAnswers) {
+            if (answers.containsKey(chr.toString())) return "1";
+        }
+        return "0";
+    }
+
     private String GetHashMapKeysValues(HashMap<String, String> _answers){
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -177,13 +207,12 @@ public abstract class Question implements Serializable {
                         .append(". ")
                         .append(entry.getValue().trim())
                         .append("\n");
-            } else{
+            } else {
                 stringBuilder
                         .append(entry.getKey().trim())
                         .append(".")
                         .append("\n");
             }
-
         }
         return stringBuilder.toString();
     }

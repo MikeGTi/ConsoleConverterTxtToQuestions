@@ -7,7 +7,7 @@ public class QuestionMultipleChoice extends Question {
     @Serial
     private static final long serialVersionUID = 6434123350448509776L;
 
-    QuestionMultipleChoice() {
+    public QuestionMultipleChoice() {
         super( QuestionTypes.MultipleChoice );
     }
 
@@ -15,8 +15,8 @@ public class QuestionMultipleChoice extends Question {
         super(QuestionTypes.MultipleChoice, _queNumber, _stem, _answers, _rightAnswers, _difficulty);
     }
 
-    /*@Override
-    public String toString(){
+
+    public String toHtmlString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\n" + "Question type: " + super.getType().toString() + "\n")
                 .append("Question title: " + super.getTitle() + "\n")
@@ -26,6 +26,23 @@ public class QuestionMultipleChoice extends Question {
                 .append("Answer: " + super.getRightAnswersString() + "\n")
                 .append("Difficulty: " + super.getDifficulty());
         return stringBuilder.toString();
-    }*/
+    }
 
+    @Override
+    public String toHTML() {
+        StringBuilder  stringBuilder = new StringBuilder();
+        stringBuilder
+                .append("<table border=\"0\" cellpadding=\"5\">\n")
+                .append("<tr>\n")
+                .append("<td valign=\"top\">").append("<b>" + this.getNumber() + ".</b>").append("</td>\n")
+                .append("<td valign=\"top\">\n")
+                .append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">" + this.getStem() + "</div>\n")
+                .append(super.getHtmlAnswers(this.getAnswers(), this.getRightAnswers(), Integer.toString(this.getNumber())).replaceAll("dummyElementType", "radio"))
+                //.append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">Difficulty: " + question.getDifficulty() + "</div>\n")
+                .append("</td>\n")
+                .append("</tr>\n")
+                .append("</table>\n");
+
+        return stringBuilder.toString();
+    }
 }
