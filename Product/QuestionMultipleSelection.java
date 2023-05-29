@@ -1,4 +1,4 @@
-package BusinessLayer;
+package Product;
 
 import java.io.Serial;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public class QuestionMultipleSelection extends Question {
         super( QuestionTypes.MultipleSelection );
     }
 
-    QuestionMultipleSelection(int _queNumber, String _stem, HashMap<String, String> _answers, Character[] _rightAnswers, BusinessLayer.Difficulty _difficulty) {
+    QuestionMultipleSelection(int _queNumber, String _stem, HashMap<String, String> _answers, Character[] _rightAnswers, Product.Difficulty _difficulty) {
         super(QuestionTypes.MultipleChoice, _queNumber, _stem, _answers, _rightAnswers, _difficulty);
     }
 

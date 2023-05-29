@@ -1,6 +1,6 @@
-package BusinessLayer.HtmlSerializer;
+package Product.HtmlSerializer;
 
-import BusinessLayer.HtmlWrappable;
+import Product.HtmlWrappable;
 
 import java.util.HashMap;
 

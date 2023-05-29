@@ -1,4 +1,4 @@
-package BusinessLayer;
+package Product;
 
 public enum Difficulty {
     EASY("Easy"), MIDDLE("Middle"), HARD("Hard");

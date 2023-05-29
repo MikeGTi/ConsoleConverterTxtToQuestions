@@ -1,5 +1,5 @@
 Main
-1. Create html set of questions with grading script.
+Create html set of questions with grading script.
 
 Tech task
 1. Get questions from text file (utf8)
@@ -19,9 +19,9 @@ Tech task
     - add scripts for grade (TypeScript template)
     - save file (html)
 
-Now
+Progress:
 1. Done all
-2. Done 2.1, postponed 2.2*
+2. Done 2.1-2; postponed 2.3*
 3. Partly 3.1, recoding 3.2, done 3.3, in progress 3.4, done 3.5
 
 Will be code

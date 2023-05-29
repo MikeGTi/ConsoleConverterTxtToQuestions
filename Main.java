@@ -1,24 +1,29 @@
-import BusinessLayer.ParserQuestion;
-import BusinessLayer.Question;
-import BusinessLayer.WrapperQuestions;
+import Product.ParserQuestion;
+import Product.Question;
+import Product.WrapperQuestions;
 import DataExportImport.IOdata;
 import DataExportImport.Printer;
-import TestPackage.QuestionDataForTesting;
+import Tests.QuestionDataForTesting;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         //---------------------------------------------------------------------
-        //Block for random numbers
-        /*final int queCount = 100;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("¬ведите кол-во необходимых вопросов: ");
-        final int testQueCount = scanner.nextInt();
+        //random numbers block
+        final int queCount = 100;
 
+        //input from console block
+        /*Scanner scanner = new Scanner(System.in);
+        System.out.println("¬ведите кол-во необходимых вопросов: ");
+        final int testQueCount = scanner.nextInt();*/
+
+        final int testQueCount = 20;
         int[] queRndNumbers = new Random().ints(testQueCount, 1, queCount).toArray();
         System.out.println(Arrays.toString(queRndNumbers));
-        System.out.println("\n");*/
+        System.out.println("\n");
 
         //---------------------------------------------------------------------
 

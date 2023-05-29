@@ -1,4 +1,4 @@
-package BusinessLayer.HtmlSerializer;
+package Product.HtmlSerializer;
 
 public class Serializer {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package BusinessLayer;
+package Product;
 
 public enum QuestionTypes {
     MultipleChoice("Multiple Choice"),

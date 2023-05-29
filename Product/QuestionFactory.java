@@ -1,4 +1,4 @@
-package BusinessLayer;
+package Product;
 
 public class QuestionFactory {
     private int multipleChoiceQueCount = 0;

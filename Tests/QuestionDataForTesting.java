@@ -1,9 +1,9 @@
-package TestPackage;
+package Tests;
 
-import BusinessLayer.Difficulty;
-import BusinessLayer.Question;
-import BusinessLayer.QuestionFactory;
-import BusinessLayer.QuestionTypes;
+import Product.Difficulty;
+import Product.Question;
+import Product.QuestionFactory;
+import Product.QuestionTypes;
 
 import java.util.HashMap;
 
@@ -12,12 +12,10 @@ import static DataExportImport.IOdata.readFile;
 public class QuestionDataForTesting {
 
     public static void main(String[] args) {
-
         QuestionDataForTesting questionDataForTesting = new QuestionDataForTesting();
         Question questionTest = questionDataForTesting.initQuestionObject(new QuestionFactory().newQuestion(QuestionTypes.MultipleChoice));
         System.out.println(questionTest.toString());
         System.out.println(questionTest.toHTML());
-
     }
 
     private String txt = GetQuestionsString();

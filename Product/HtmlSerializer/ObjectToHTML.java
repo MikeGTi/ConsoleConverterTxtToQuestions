@@ -1,4 +1,4 @@
-package BusinessLayer.HtmlSerializer;
+package Product.HtmlSerializer;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

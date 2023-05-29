@@ -1,6 +1,6 @@
-package BusinessLayer;
+package Product;
 
-import BusinessLayer.HtmlSerializer.HTMLelement;
+import Product.HtmlSerializer.HTMLelement;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -33,7 +33,7 @@ public abstract class Question implements Serializable, HtmlWrappable {
     private Character[] RightAnswers;
 
     @HTMLelement(key = "Question difficulty")
-    private BusinessLayer.Difficulty Difficulty;
+    private Product.Difficulty Difficulty;
 
     Question(QuestionTypes _queType){
         QueNumber = counter++;
@@ -116,7 +116,7 @@ public abstract class Question implements Serializable, HtmlWrappable {
         return this.Difficulty.toString();
     }
 
-    public void setDifficulty(BusinessLayer.Difficulty _difficulty) {
+    public void setDifficulty(Product.Difficulty _difficulty) {
         Difficulty = _difficulty;
     }
 
@@ -124,13 +124,14 @@ public abstract class Question implements Serializable, HtmlWrappable {
     @Override
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("\n" + "Question type: " + this.QueType.toString() + "\n")
-                     .append("Question title: " + this.getTitle() + "\n")
-                     .append("Question uuid: " + this.QueUUID + "\n")
-                     .append(this.QueNumber + ". " +  this.Stem + "\n")
-                     .append(this.getAnswersString())
-                     .append("Answer: " + this.getRightAnswersString() + "\n")
-                     .append("Difficulty: " + this.getDifficulty());
+        stringBuilder
+            .append("\n" + "Question type: " + this.QueType.toString() + "\n")
+            .append("Question title: " + this.getTitle() + "\n")
+            .append("Question uuid: " + this.QueUUID + "\n")
+            .append(this.QueNumber + ". " +  this.Stem + "\n")
+            .append(this.getAnswersString())
+            .append("Answer: " + this.getRightAnswersString() + "\n")
+            .append("Difficulty: " + this.getDifficulty());
         return stringBuilder.toString();
     }
 
@@ -216,5 +217,4 @@ public abstract class Question implements Serializable, HtmlWrappable {
         }
         return stringBuilder.toString();
     }
-
 }

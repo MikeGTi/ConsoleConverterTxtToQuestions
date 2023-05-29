@@ -1,4 +1,4 @@
-package BusinessLayer;
+package Product;
 
 import java.util.ArrayList;
 
