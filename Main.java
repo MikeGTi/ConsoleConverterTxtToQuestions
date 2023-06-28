@@ -20,11 +20,12 @@ public class Main {
         String path = "";
         Integer needQue = 0;
 
-        if (!(args.length == 0)) {
-            path = args[0];
-            needQue = Integer.parseInt(args[1]);
+        if (!(args == null)) {
+            if (!(args.length == 0)) {
+                path = args[0];
+                needQue = Integer.parseInt(args[1]);
+            }
         }
-
         if (path.isEmpty()) {
             System.out.println("¬ведите путь к файлу: ");
             try {
@@ -36,7 +37,6 @@ public class Main {
             }
         }
         //if (path.isEmpty()){ path = "D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt"; }
-
         //String txt = new QuestionDataForTesting("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt").toString();
         //String txt = new QuestionDataForTesting().getQuestionsString();
         String txt = new FileIOdata().readFile(path, "cp1251").toString();
@@ -56,6 +56,9 @@ public class Main {
             System.out.println("¬ведите кол-во необходимых вопросов(не более " + questions.get().size() + "): ");
             Scanner scanner = new Scanner(System.in);
             needQue = scanner.nextInt();
+            if (needQue.equals(0)) {
+                needQue = questions.get().size();
+            }
         }
 
         int resultQueTotalCount = needQue;

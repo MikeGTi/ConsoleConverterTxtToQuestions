@@ -29,6 +29,6 @@ Question uuid: d85057bd-c728-419f-a6e2-90e28f454a23
 1. Is it understandable?
     a. Yes
     b. No
-    â. I don't know
+    c. I don't know
  Answer: a.
  Difficulty: Easy
