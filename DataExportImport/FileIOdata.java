@@ -4,7 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class IOdata {
+public class FileIOdata {
 
     public static void writeObjectToFile(String _path, Object _object){
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(_path))){
@@ -24,13 +24,14 @@ public class IOdata {
         return objects;
     }
 
-    public static String readFile(String _path) {
-
+    public static String readFile(String _path, String charSet) {
         String line = null;
-        StringBuilder stringBuilder = new StringBuilder();
         String ls = "\n"; //System.getProperty("line.separator");
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(_path))) {
+        StringBuilder stringBuilder = new StringBuilder();
+        //try (BufferedReader bufferedReader = new BufferedReader(new FileReader(_path))) {
+        try (BufferedReader bufferedReader = new BufferedReader(
+                                                                new InputStreamReader(
+                                                                    new FileInputStream(_path), charSet.toString()))) {
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuilder.append(line).append(ls);
             }

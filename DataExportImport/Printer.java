@@ -81,6 +81,6 @@ public class Printer {
         for (String line : lines) {
             System.out.println(line);
         }*/
-        new IOdata().writeFile(_path,_txt);
+        new FileIOdata().writeFile(_path,_txt);
     }
 }

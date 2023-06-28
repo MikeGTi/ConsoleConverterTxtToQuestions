@@ -1,42 +1,81 @@
 package Tests;
 
-import Product.Difficulty;
-import Product.Question;
-import Product.QuestionFactory;
-import Product.QuestionTypes;
+import DataExportImport.Printer;
+import Product.Entity.Enums.Difficulty;
+import Product.Entity.Enums.QuestionPart;
+import Product.Entity.Enums.QuestionTypes;
+import Product.Entity.Question;
+import Product.QuestionParser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 
-import static DataExportImport.IOdata.readFile;
+import static DataExportImport.FileIOdata.readFile;
 
 public class QuestionDataForTesting {
 
+
     public static void main(String[] args) {
-        QuestionDataForTesting questionDataForTesting = new QuestionDataForTesting();
-        Question questionTest = questionDataForTesting.initQuestionObject(new QuestionFactory().newQuestion(QuestionTypes.MultipleChoice));
+        /*Question questionTest = getQuestionObject(new QuestionFactory().newQuestion(QuestionTypes.MultipleChoice));
         System.out.println(questionTest.toString());
-        System.out.println(questionTest.toHTML());
+        System.out.println(questionTest.toHTML());*/
+
+        ArrayList<Question> queList = getQuestionsObjects().get();
+        queList.forEach(question -> { new Printer(question.toString()).printLn(); });
+        queList.forEach(question -> { new Printer(question.toHTML()).printLn(); });
     }
 
-    private String txt = GetQuestionsString();
+    private String txt = getQuestionsString();
 
     public QuestionDataForTesting() {}
 
     public QuestionDataForTesting(String _path) {
-        txt = readFile(_path);
+        txt = readFile(_path, "cp1251"); //"utf8"
     }
 
-    public String GetQuestionString(){
+    public static String getQuestionString(){
+        //getBrokenQuestionString - strong connection
         return  "Question type: Multiple Choice\n" +
                 "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
                 "а. Трудность, скорость, болдеринг\n" +
                 "б. Скорость, двоеборье\n" +
                 "в. Трудность, скорость, болдеринг, двоеборье\n" +
                 "Answer: в.\n" +
+                "Difficulty: Easy\n" +
                 "\n";
     }
 
-    public String GetQuestionsString(){
+    public String getBrokenQuestionString(QuestionPart brokenIn){
+        String questionText = getQuestionString();
+        switch (brokenIn) {
+            case QUESTION_TYPE -> {
+                questionText = questionText.replaceFirst("Question type: Multiple Choice\n","");
+            }
+            case QUESTION_NUMBER -> {
+                questionText = questionText.replaceFirst("1\\. ","");
+            }
+            case QUESTION_STEM -> {
+                questionText = questionText.replaceFirst("Соревнования проводятся в следующих спортивных дисциплинах","");
+            }
+            case QUESTION_ANSWERS -> {
+                questionText = questionText.replaceFirst("а\\. Трудность, скорость, болдеринг\n","");
+                questionText = questionText.replaceFirst("б\\. Скорость, двоеборье\n","");
+            }
+            case QUESTION_ANSWER_ONE -> {
+                questionText = questionText.replaceFirst("в\\. Трудность, скорость, болдеринг, двоеборье\n","");
+            }
+            case QUESTION_RIGHT_ANSWERS -> {
+                questionText = questionText.replaceFirst("Answer: в\\.\n","");
+            }
+            case QUESTION_DIFFICULTY -> {
+                questionText = questionText.replaceFirst("Difficulty: Easy\n","");
+            }
+        }
+        return questionText;
+    }
+
+    public static String getQuestionsString(){
         return  "Question type: Multiple Choice\n" +
                 "1. Соревнования проводятся в следующих спортивных дисциплинах\n" +
                 "а. Трудность, скорость, болдеринг\n" +
@@ -45,7 +84,7 @@ public class QuestionDataForTesting {
                 "Answer: в.\n" +
                 "\n" +
                 "Question type: Multiple Choice\n" +
-                "Question title: Регламенты\n" +
+                "Question title: Регламент\n" +
                 "Question uuid: 6388e9a8-d6f1-4b47-8e6e-19d63c91d473\n" +
                 "2. Регламенты соревнований I и II класса размещаются на официальном сайте Федерации не позднее, чем\n" +
                 "а. 1 месяц\n" +
@@ -66,22 +105,36 @@ public class QuestionDataForTesting {
                 "б. нет\n" +
                 "Answer: а, б.\n" +
                 "Difficulty: Easy.\n";
-
     }
 
-    public <T extends Question> T initQuestionObject(T question){
+    public static Optional<ArrayList<Question>> getQuestionsObjects(){
+        QuestionParser parser = new QuestionParser(getQuestionsString());
+        Optional<ArrayList<Question>> optionalQuestionsList = parser.getList();
+
+        if (optionalQuestionsList.isPresent()) {
+            return optionalQuestionsList;
+        } else {
+            return Optional.empty();
+        }
+    }
+
+
+    public static <T extends Question> T getQuestionObject(T question){
         //T question = new QuestionFactory().newQuestion(questionTypes);
         HashMap<String, String> answers = new HashMap<String, String>();
                                 answers.put("a","Трудность, скорость, болдеринг");
                                 answers.put("б","Скорость, двоеборье");
                                 answers.put("в","Трудность, скорость, болдеринг, двоеборье");
 
-        question.setNumber(1);
-        question.setStem("Соревнования проводятся в следующих спортивных дисциплинах");
-        question.setAnswers(answers);
-        question.setRightAnswers(new Character[]{'а','в'});
+        Character[] rightAnswers = new Character[]{'а','в'};
         if (question.getType() == QuestionTypes.MultipleChoice) question.setRightAnswers(new Character[]{'а'});
-        question.setDifficulty(Difficulty.EASY);
+
+        question
+            .setNumber(1)
+            .setStem("Соревнования проводятся в следующих спортивных дисциплинах")
+            .setAnswers(answers)
+            .setRightAnswers(rightAnswers)
+            .setDifficulty(Difficulty.EASY);
 
         return question;
     }
@@ -90,7 +143,6 @@ public class QuestionDataForTesting {
     public String toString() {
         return txt;
     }
-
 }
 
 

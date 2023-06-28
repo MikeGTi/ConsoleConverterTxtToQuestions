@@ -1,4 +1,4 @@
-package Product;
+package Product.Entity.Enums;
 
 public enum Difficulty {
     EASY("Easy"), MIDDLE("Middle"), HARD("Hard");

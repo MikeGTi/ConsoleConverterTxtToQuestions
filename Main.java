@@ -1,56 +1,92 @@
-import Product.ParserQuestion;
-import Product.Question;
-import Product.WrapperQuestions;
-import DataExportImport.IOdata;
+import DataExportImport.FileIOdata;
 import DataExportImport.Printer;
-import Tests.QuestionDataForTesting;
+import Product.Entity.Question;
+import Product.HtmlWrap.QuestionsWrapper;
+import Product.QuestionParser;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+
 
 public class Main {
     public static void main(String[] args) {
         //---------------------------------------------------------------------
-        //random numbers block
-        final int queCount = 100;
-
-        //input from console block
-        /*Scanner scanner = new Scanner(System.in);
-        System.out.println("¬ведите кол-во необходимых вопросов: ");
-        final int testQueCount = scanner.nextInt();*/
-
-        final int testQueCount = 20;
-        int[] queRndNumbers = new Random().ints(testQueCount, 1, queCount).toArray();
-        System.out.println(Arrays.toString(queRndNumbers));
-        System.out.println("\n");
-
-        //---------------------------------------------------------------------
-
-
-
         //IO block
-        String txt1 = new QuestionDataForTesting().GetQuestionsString();
-        //System.out.println(txt1);
+        String path = "";
+        Integer needQue = 0;
 
-        String txt2 = new QuestionDataForTesting("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt").toString();
-        if (txt2 == null) return;
-        String txt = txt1;
+        if (!(args.length == 0)) {
+            path = args[0];
+            needQue = Integer.parseInt(args[1]);
+        }
 
-        ArrayList<? extends Question> questions = new ParserQuestion(txt).getList();
-        questions.forEach(question -> new Printer(question.toString()).printLn());
-        WrapperQuestions wrapperQuestions = new WrapperQuestions(questions);
-                         wrapperQuestions.toHTML("Questions assessment");
+        if (path.isEmpty()) {
+            System.out.println("¬ведите путь к файлу: ");
+            try {
+                Scanner scanner = new Scanner(System.in);
+                path = java.net.URLDecoder.decode(scanner.next().toString().trim(), "UTF8").toString();
+                //System.out.println("Path: '" + path + "'");
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        //if (path.isEmpty()){ path = "D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt"; }
 
-        //new Printer(wrapperQuestions.toString()).printLn();
+        //String txt = new QuestionDataForTesting("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt").toString();
+        //String txt = new QuestionDataForTesting().getQuestionsString();
+        String txt = new FileIOdata().readFile(path, "cp1251").toString();
+        if (txt.isEmpty()) {
+            System.err.println("File Not found\nPath: " + path);
+            return;
+        }
 
-        IOdata ioData =  new IOdata();
-        ioData.writeFile("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Output\\test1.html", wrapperQuestions.toString());
+        Optional<ArrayList<Question>> questions = new QuestionParser(txt).getList();
+        if (questions.isEmpty()) {
+            System.err.println("Parse file error\nPath: " + path);
+            return;
+        }
+        //----------------------------------------------
+        //input from console block
+        if (needQue == 0) {
+            System.out.println("¬ведите кол-во необходимых вопросов(не более " + questions.get().size() + "): ");
+            Scanner scanner = new Scanner(System.in);
+            needQue = scanner.nextInt();
+        }
+
+        int resultQueTotalCount = needQue;
+        if (questions.get().size() <= resultQueTotalCount) {
+            resultQueTotalCount = questions.get().size();
+        }
+        //----------------------------------------------
+        Integer[] queRndNumbers = getUniqueRandomIntAr(resultQueTotalCount, 0, questions.get().size()-1);
+
+        ArrayList<Question> rndQueList =
+                Arrays.stream(queRndNumbers).map(queRndNumber -> questions.get().get(queRndNumber)).collect(Collectors.toCollection(ArrayList::new));
+
+        rndQueList.forEach(question -> new Printer(question.toString()).printLn());
+
+        QuestionsWrapper questionsWrapper = new QuestionsWrapper(rndQueList);
+                         questionsWrapper.toHTML("Questions assessment", true);
+
+        //System.out.println(questionsWrapper.toString());
+
+        //new Printer(questionsWrapper.toString()).printLn();
+
+        Path folderPath = Paths.get(path).getParent();
 
 
-        //IOdata.writeObjectToFile("out\\questions.bin", questions);
 
-        /*ArrayList<? extends Question> questions2 = IOdata.<Question>readObjectFromFile("out\\questions.bin");
+        FileIOdata ioData =  new FileIOdata();
+                   //ioData.writeFile("D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Output\\test1.html", questionsWrapper.toString());
+                   ioData.writeFile(folderPath + "\\test1.html", questionsWrapper.toString());
+        //FileIOdata.writeObjectToFile("out\\questions.bin", questions);
+
+        /*ArrayList<? extends Question> questions2 = FileIOdata.<Question>readObjectFromFile("out\\questions.bin");
         System.out.println(questions2);*/
 
         //---------------------------------------------------------------------
@@ -69,4 +105,18 @@ public class Main {
             new Printer(numTags.find(i, String.valueOf(new Tag(i)))).PrintLn();
         }*/
     }
+    
+    private static Integer[] getUniqueRandomIntAr(int upperBound, int start, int end){
+        if ((upperBound - (start + end - 1)) == 0 || (upperBound - (start + end + 1)) == 0) {
+            return IntStream.rangeClosed(start, end).boxed().toArray(n -> new Integer[upperBound]);
+        }
+
+        Random rnd = new Random();
+        Set<Integer> set = new HashSet<>();
+        while (set.size() < upperBound) {
+            set.add(rnd.nextInt(start, end));
+        }
+        return set.toArray(new Integer[set.size() - 1]);
+    }
+    
 }

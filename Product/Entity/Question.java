@@ -1,6 +1,8 @@
-package Product;
+package Product.Entity;
 
 import Product.HtmlSerializer.HTMLelement;
+import Product.HtmlWrap.HtmlWrappable;
+import Product.Entity.Enums.QuestionTypes;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -33,14 +35,14 @@ public abstract class Question implements Serializable, HtmlWrappable {
     private Character[] RightAnswers;
 
     @HTMLelement(key = "Question difficulty")
-    private Product.Difficulty Difficulty;
+    private Product.Entity.Enums.Difficulty Difficulty;
 
     Question(QuestionTypes _queType){
         QueNumber = counter++;
         this.QueType = _queType;
     }
 
-    Question(QuestionTypes _queType, int _queNumber, String _stem, HashMap<String, String> _answers, Character[] _rightAnswers, Difficulty _difficulty){
+    Question(QuestionTypes _queType, int _queNumber, String _stem, HashMap<String, String> _answers, Character[] _rightAnswers, Product.Entity.Enums.Difficulty _difficulty){
         QueNumber = counter++;
         this.QueType = _queType;
         this.QueNumber = _queNumber;
@@ -52,15 +54,19 @@ public abstract class Question implements Serializable, HtmlWrappable {
 
     public String getUUID() { return QueUUID; }
 
-    public void setUUID(String _questionUUID) {
+    public Question setUUID(String _questionUUID) {
         if (!(_questionUUID.trim()).isEmpty())  QueUUID = _questionUUID;
+        return this;
     }
 
     public QuestionTypes getType() { return QueType; }
 
     public int getNumber() {  return QueNumber; }
 
-    public void setNumber(int _queNumber) { QueNumber = _queNumber; }
+    public Question setNumber(int _queNumber) {
+        QueNumber = _queNumber;
+        return this;
+    }
 
     public String getTitle() {
         /*String res = "";
@@ -70,14 +76,18 @@ public abstract class Question implements Serializable, HtmlWrappable {
         return QueTitle.trim();
     }
 
-    public void setTitle(String _queTitle) { QueTitle = _queTitle; }
+    public Question setTitle(String _queTitle) {
+        QueTitle = _queTitle.trim();
+        return this;
+    }
 
     public String getStem() {
         return Stem;
     }
 
-    public void setStem(String _stem) {
+    public Question setStem(String _stem) {
         Stem = _stem.trim();
+        return this;
     }
 
     public HashMap<String,String> getAnswers() {
@@ -85,47 +95,53 @@ public abstract class Question implements Serializable, HtmlWrappable {
     }
 
     public String getAnswersString() {
-        return this.GetHashMapKeysValues(this.Answers);
+        return this.getHashMapKeysValues(this.Answers);
     }
 
     public String getRightAnswersString() {
+        if (this.RightAnswers == null) return "";
         StringBuilder stringBuilder = new StringBuilder();
         String delimiter = ", ";
         for (int i = 0; i < this.RightAnswers.length; i++) {
             if (i == this.RightAnswers.length - 1) delimiter = ".";
             if (!this.RightAnswers[i].toString().isEmpty()) {
-                stringBuilder.append(this.RightAnswers[i]).append(delimiter);
+                stringBuilder.append(this.RightAnswers[i].toString().trim()).append(delimiter);
             }
         }
         return stringBuilder.toString();
     }
 
-    public void setAnswers(HashMap<String, String> _answers) {
+    public Question setAnswers(HashMap<String, String> _answers) {
         Answers = _answers;
+        return this;
     }
 
     public Character[] getRightAnswers() {
         return RightAnswers;
     }
 
-    public void setRightAnswers(Character[] _rightAnswers) {
+    public Question setRightAnswers(Character[] _rightAnswers) {
         RightAnswers = _rightAnswers;
+        //System.out.println(RightAnswers[0]);
+        return this;
     }
 
     public String getDifficulty() {
+        if (this.Difficulty == null) return "";
         return this.Difficulty.toString();
     }
 
-    public void setDifficulty(Product.Difficulty _difficulty) {
+    public Question setDifficulty(Product.Entity.Enums.Difficulty _difficulty) {
         Difficulty = _difficulty;
+        return this;
     }
-
 
     @Override
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
-            .append("\n" + "Question type: " + this.QueType.toString() + "\n")
+            .append("\n")
+            .append("Question type: " + this.QueType.toString() + "\n")
             .append("Question title: " + this.getTitle() + "\n")
             .append("Question uuid: " + this.QueUUID + "\n")
             .append(this.QueNumber + ". " +  this.Stem + "\n")
@@ -161,44 +177,58 @@ public abstract class Question implements Serializable, HtmlWrappable {
     public String toHTML() {
         StringBuilder  stringBuilder = new StringBuilder();
         stringBuilder
-                .append("<table border=\"0\" cellpadding=\"5\">\n")
-                .append("<tr>\n")
-                .append("<td valign=\"top\">").append("<b>" + this.getNumber() + ".</b>").append("</td>\n")
-                .append("<td valign=\"top\">\n")
-                .append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">" + this.getStem() + "</div>\n")
-                .append(getHtmlAnswers(this.getAnswers(), this.getRightAnswers(), Integer.toString(this.getNumber())).replaceAll("dummyElementType", "radio"))
-                //.append("<div><span style=\"font-family: Calibri; font-size: 11pt;\">Difficulty: " + question.getDifficulty() + "</div>\n")
-                .append("</td>\n")
-                .append("</tr>\n")
-                .append("</table>\n");
-
+                .append("<div class=\"container\" name=\"QueBody\">\n")
+                .append("    <div class=\"Question\">\n")
+                .append("        <table border=\"0\" cellpadding=\"5\">\n")
+                .append("            <tr>\n")
+                .append("                <td valign=\"top\">")
+                .append("    <div class=\"QueNumber\"><b>" + QueNumber + ". </b></div>")
+                .append("                </td>\n")
+                .append("                <td valign=\"top\">\n")
+                .append("                    <div class=\"QueStem\"><span style=\"font-family: Calibri; font-size: 11pt;\">" + this.getStem() + "</div>\n")
+                .append("                    <div class=\"QueAnswers\">\n")
+                .append(getTableHtmlAnswers())
+                .append("                    </div>\n")
+                //.append("                  <div class=\"QueDifficulty\"><span style=\"font-family: Calibri; font-size: 11pt;\">Difficulty: " + question.getDifficulty() + "</div>\n")
+                .append("                </td>\n")
+                .append("            </tr>\n")
+                .append("        </table>\n")
+                .append("    </div>\n")
+                .append("</div>\n");
         return stringBuilder.toString();
     }
 
     @HTMLelement(key = "Answers")
-    public String getHtmlAnswers(HashMap<String, String> answers, Character[] rightAnswers, String questionNumber){
+    private String getTableHtmlAnswers(){
         StringBuilder  stringBuilder = new StringBuilder();
-        for(HashMap.Entry<String, String> entry : answers.entrySet()) {
+        for(HashMap.Entry<String, String> entry : Answers.entrySet()) {
             stringBuilder
-                    .append("<table border=\"0\">\n")
-                    .append("<tr>\n")
-                    .append("<td valign=\"top\" nowrap=\"nowrap\"><input type=\"dummyElementType\" name=\"Ans").append(questionNumber).append("\" value=\"").append(isRightAnswer(answers, rightAnswers)).append("\" />")
-                    .append("<b>"+ entry.getKey() +".</b></td>\n")
-                    .append("<td><div><span style=\"font-family: Calibri; font-size: 11pt;\">"+ entry.getValue() +"</span><br /></div></td>\n")
-                    .append("</tr>\n")
-                    .append("</table>\n");
+                .append("                        <table border=\"0\">\n")
+                .append("                            <tr>\n")
+                .append("                                <td valign=\"top\">")
+                .append("   <input type=\"dummyElementType\" class=\"QueAnswerElement\" value=\"").append(isRightAnswer(entry.getKey(), RightAnswers)).append("\" />")
+                .append("   </td>\n")
+                .append("                                <td valign=\"top\">")
+                .append("   <div class=\"QueAnswerChar\"><b>"+ entry.getKey() +". </b></div>")
+                .append("   </td>\n")
+                .append("                                <td valign=\"top\">")
+                .append("   <div class=\"QueAnswerStem\"><span style=\"font-family: Calibri; font-size: 11pt;\">"+ entry.getValue() +"</span><br /></div>")
+                .append("   </td>\n")
+                .append("                            </tr>\n")
+                .append("                        </table>\n");
         }
         return stringBuilder.toString();
     }
 
-    private String isRightAnswer(HashMap<String, String> answers, Character[] rightAnswers){
+    private String isRightAnswer(String curAnswerChar, Character[] rightAnswers){
         for (Character chr: rightAnswers) {
-            if (answers.containsKey(chr.toString())) return "1";
+            if (curAnswerChar.equals(chr.toString())) return "1";
         }
         return "0";
     }
 
-    private String GetHashMapKeysValues(HashMap<String, String> _answers){
+    private String getHashMapKeysValues(HashMap<String, String> _answers){
+        if (_answers == null) return "";
         StringBuilder stringBuilder = new StringBuilder();
 
         for (HashMap.Entry<String, String> entry : _answers.entrySet()) {

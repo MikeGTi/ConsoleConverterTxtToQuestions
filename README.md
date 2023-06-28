@@ -1,34 +1,37 @@
-Main
-Create html set of questions with grading script.
+Program for convert text questions from text file(UTF8) to html page with questions assessment.
 
-Tech task
-1. Get questions from text file (utf8)
-    - get text
-    - split on question blocks
-    - parse question blocks to question object class
+How to run:
+java -jar C:\Temp\CreateQuestionsList.jar D:\Temp\questions_test.txt 19
 
-2. Store questions
-    - save questions objects in file (bin) (serialize/deserialize)
-    - save questions objects to text file (utf8)
-    - save questions objects into DB (MySQL, SQLight)*
+first key  (D:\Temp\questions_test.txt) - text file path with questions text block, avoid russian symbols in.
+second key (19) - number of questions need to be in assessment page
 
-3. Create html set of questions with grading script.
-    - get questions set (quantity, random selected)
-    - wrap questions fields values to html tags (table)
-    - wrap to standard html header
-    - add scripts for grade (TypeScript template)
-    - save file (html)
+Supported question types:
+- Multiple Choice
+- Multiple Selection
 
-Progress:
-1. Done all
-2. Done 2.1-2; postponed 2.3*
-3. Partly 3.1, recoding 3.2, done 3.3, in progress 3.4, done 3.5
+Question text file create rules:
+Question block starts from 'Question type', ends with blank row.
 
-Will be code
-x. User Interface for application.
-x. Validating parsed questions.
-x. Create 'html' file with gradable scripts from questions list.
-x. Collect random questions list.
-x. Collect list of unique questions from txt and bin files.
-x. Add storage DB. Create structure tables.
-x. Read/Write questions object from/to DB (MySQL, SQLight).
+Required fields:
+- Question type    -> 'Multiple Choice'
+- Question number  -> '19'
+- Question stem	   -> 'Официальные ответы по трассам на соревнованиях трудности может дать'
+- Question answers -> а. Главный судья
+б. Заместитель главного судьи по виду
+- Question right answer -> Answer: б. (for Multiple Selection might be several values -> а, б)
+
+Sample part of question text block:
+
+Question type: Multiple Choice
+Question title:
+Question uuid: d85057bd-c728-419f-a6e2-90e28f454a23
+19. Официальные ответы по трассам на соревнованиях трудности может дать
+    а. Главный судья
+    б. Заместитель главного судьи по виду
+    в. Заместитель главного судьи
+    г. Начальник трасс
+    д. Подготовщик
+    е. Все вышеперечисленные
+    Answer: б.
+    Difficulty: Easy

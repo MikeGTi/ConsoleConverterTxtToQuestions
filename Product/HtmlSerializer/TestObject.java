@@ -1,6 +1,6 @@
 package Product.HtmlSerializer;
 
-import Product.HtmlWrappable;
+import Product.HtmlWrap.HtmlWrappable;
 
 import java.util.HashMap;
 

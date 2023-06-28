@@ -1,4 +1,4 @@
-package Product;
+package Product.Entity.Enums;
 
 public enum QuestionTypes {
     MultipleChoice("Multiple Choice"),
@@ -10,12 +10,12 @@ public enum QuestionTypes {
 
     private final String name;
 
-    QuestionTypes(String _value) {
+    private QuestionTypes(String _value) {
         this.name = _value;
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         return name;
     }
 }
