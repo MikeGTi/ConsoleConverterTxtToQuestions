@@ -1,0 +1,40 @@
+Main
+Create html set of questions with grading script.
+
+Tech sub-tasks
+1. Get questions
+    + get text from file (utf8)
+    + split on question blocks
+    + parse question blocks to question object class
+
+2. Store
+    + save questions objects in file (bin) (serialize/deserialize)
+    + save questions objects to text file (utf8)
+    * save questions objects into DB (MySQL, SQLight)*, hibernate framework
+    - save html file
+
+3. Create html set of questions
+    +- get questions set (quantity, random selected)
+    + wrap questions fields values to html tags (table)
+    + wrap to standard html header
+    - add scripts for grade (TypeScript template)
+
+
+Status:
+-  in progress;
++  done;
++- part;
+*  postponed;
+.. recode;
+
+
+Will be code:
+x. Create 'html' file with gradable scripts from questions list.
+x. Collect random questions list.
+x. Collect list of unique questions from txt and bin files.
+x. User Interface.
+x. Validating parsed questions.
+
+Store DB:
+x. Add storage DB. Create structure tables.
+x. Read/Write questions object from/to DB (MySQL, SQLight).

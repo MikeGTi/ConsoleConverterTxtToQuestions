@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CreateQuestionsList:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b29ad95f-a1be-490e-94a8-dd3bc075f30b" name="Changes" comment="Added manual How to deal with this program">
+      <change afterPath="$PROJECT_DIR$/DataExportImport/ArgsHandlingIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreateQuestionsList.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CreateQuestionsList.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="21d33f3f-3256-4772-b9e5-ab7c588003a8" />
+        <option name="url" value="https://github.com/MikeGTi/QuestionsTest.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2OBR3T3zzwcG5c4ktat3w6Vijn3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/mboychook/.m2/repository/javafx-sdk-20.0.1/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pathVariables",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JavaProjects\CreateQuestionsTest\DataExportImport" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JavaProjects\CreateQuestionsTest\UI" />
+      <recent name="D:\JavaProjects\CreateQuestionsTest" />
+      <recent name="D:\JavaProjects\CreateQuestionsTest\Task\TechTask" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Product.Entity" />
+      <recent name="Product.Enums" />
+      <recent name="TestPackage" />
+      <recent name="BusinessLayer" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="TestPackage" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="UI" />
+      <recent name="DataExportImport" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="ClientIO" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DataExportImport.ClientIO" />
+      <module name="CreateQuestionsList" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\mboychook\.m2\repository\javafx-sdk-20.0.1\lib --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DataExportImport.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="20" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="CreateQuestionsList" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PathRequest" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DataExportImport.PathRequest" />
+      <module name="CreateQuestionsList" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\mboychook\.m2\repository\javafx-sdk-20.0.1\lib --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DataExportImport.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionDataForTesting" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tests.QuestionDataForTesting" />
+      <module name="CreateQuestionsList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionFieldsInit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Product.QuestionFieldsInit" />
+      <module name="CreateQuestionsList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WriteQuestion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DataExportImport.WriteQuestion" />
+      <module name="CreateQuestionsTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DataExportImport.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="CreateQuestionsList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Product.Entity.Enums.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.QuestionTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuestionTest.QuestionParserTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="CreateQuestionsList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Product.Entity.Enums.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Tests" />
+      <option name="MAIN_CLASS_NAME" value="Tests.QuestionTest" />
+      <option name="METHOD_NAME" value="QuestionParserTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.PathRequest" />
+      <item itemvalue="Application.ClientIO" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.QuestionDataForTesting" />
+      <item itemvalue="Application.WriteQuestion" />
+      <item itemvalue="Application.QuestionFieldsInit" />
+      <item itemvalue="JUnit.QuestionTest.QuestionParserTest" />
+      <item itemvalue="JUnit.QuestionTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.QuestionFieldsInit" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b29ad95f-a1be-490e-94a8-dd3bc075f30b" name="Changes" comment="" />
+      <created>1681031802350</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681031802350</updated>
+      <workItem from="1681031804381" duration="4985000" />
+      <workItem from="1681053199611" duration="1180000" />
+      <workItem from="1681114008475" duration="668000" />
+      <workItem from="1681206066907" duration="14331000" />
+      <workItem from="1681285092151" duration="18791000" />
+      <workItem from="1681374733753" duration="18691000" />
+      <workItem from="1681403413509" duration="582000" />
+      <workItem from="1681487605523" duration="12167000" />
+      <workItem from="1681635034315" duration="743000" />
+      <workItem from="1681822149049" duration="957000" />
+      <workItem from="1681899690711" duration="643000" />
+      <workItem from="1682089451710" duration="9057000" />
+      <workItem from="1682101211375" duration="2936000" />
+      <workItem from="1682427863090" duration="3256000" />
+      <workItem from="1682509895623" duration="70000" />
+      <workItem from="1682520869254" duration="1469000" />
+      <workItem from="1682848918825" duration="13563000" />
+      <workItem from="1683021403587" duration="15420000" />
+      <workItem from="1683105061127" duration="11451000" />
+      <workItem from="1683200268938" duration="10679000" />
+      <workItem from="1683454783359" duration="659000" />
+      <workItem from="1683623805387" duration="1393000" />
+      <workItem from="1683714789910" duration="12762000" />
+      <workItem from="1683798320748" duration="1073000" />
+      <workItem from="1683807280604" duration="250000" />
+      <workItem from="1683807568274" duration="83000" />
+      <workItem from="1683807671412" duration="21000" />
+      <workItem from="1683807710404" duration="44000" />
+      <workItem from="1683820856140" duration="135000" />
+      <workItem from="1683887909022" duration="22362000" />
+      <workItem from="1683968151718" duration="12093000" />
+      <workItem from="1684051677807" duration="13522000" />
+      <workItem from="1684088936699" duration="1311000" />
+      <workItem from="1684322369766" duration="18461000" />
+      <workItem from="1684402818405" duration="7193000" />
+      <workItem from="1684499094878" duration="938000" />
+      <workItem from="1684599647242" duration="24000" />
+      <workItem from="1684930355309" duration="7838000" />
+      <workItem from="1685006472107" duration="2946000" />
+      <workItem from="1685034892609" duration="2416000" />
+      <workItem from="1685355214915" duration="6249000" />
+      <workItem from="1685365381469" duration="5512000" />
+      <workItem from="1685433539362" duration="4745000" />
+      <workItem from="1685966261756" duration="2329000" />
+      <workItem from="1686042138653" duration="4001000" />
+      <workItem from="1686046891777" duration="189000" />
+      <workItem from="1686047095665" duration="6198000" />
+      <workItem from="1686213445833" duration="1540000" />
+      <workItem from="1686294754325" duration="15049000" />
+      <workItem from="1686636552086" duration="9897000" />
+      <workItem from="1686665910316" duration="46000" />
+      <workItem from="1686665974058" duration="4080000" />
+      <workItem from="1686725394975" duration="2538000" />
+      <workItem from="1686728124263" duration="11828000" />
+      <workItem from="1686992391475" duration="15425000" />
+      <workItem from="1687078800075" duration="4365000" />
+      <workItem from="1687185425377" duration="1543000" />
+      <workItem from="1687244276674" duration="38000" />
+      <workItem from="1687244504706" duration="84000" />
+      <workItem from="1687442684964" duration="690000" />
+      <workItem from="1687774302678" duration="13419000" />
+      <workItem from="1687853574703" duration="17713000" />
+      <workItem from="1687942317163" duration="6128000" />
+      <workItem from="1688050026848" duration="285000" />
+      <workItem from="1688111004318" duration="6016000" />
+    </task>
+    <task id="LOCAL-00001" summary="update folders list">
+      <created>1681034267294</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681034267294</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update folders list">
+      <created>1681035133062</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681035133062</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update classes">
+      <created>1681906006103</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681906006103</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Can&#10;1. Get questions from file (txt).&#10;2. Parse text to question objects.&#10;3. Read/Write questions objects from/to file (bin, txt). Storage bin file.&#10;4. Create 'html' context from questions objects list.&#10;5. Write 'html' context to file (html).">
+      <created>1683893586349</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683893586349</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Can&#10;1. Get questions from file (txt).&#10;2. Parse text to question objects.&#10;3. Read/Write questions objects from/to file (bin, txt). Storage bin file.&#10;4. Create 'html' context from questions objects list.&#10;5. Write 'html' context to file (html).">
+      <created>1683893612424</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683893612424</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Can&#10;1. Get questions from file (txt).&#10;2. Parse text to question objects.&#10;3. Read/Write questions objects from/to file (bin, txt). Storage bin file.&#10;4. Create 'html' context from questions objects list.&#10;5. Write 'html' context to file (html).">
+      <created>1683895572858</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683895572858</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Rearranged classes">
+      <created>1684061878239</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684061878239</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Rearranged classes">
+      <created>1684062400711</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1684062400711</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Rearranged classes">
+      <created>1684944172492</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1684944172492</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Rearranged classes">
+      <created>1684944383234</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684944383234</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Clean project">
+      <created>1685356220031</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685356220031</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added manual How to deal with this program">
+      <created>1687944191890</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687944191890</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added manual How to deal with this program">
+      <created>1687944641802</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1687944641802</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added manual How to deal with this program">
+      <created>1687946603692</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687946603692</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update folders list" />
+    <MESSAGE value="update classes" />
+    <MESSAGE value="Can&#10;1. Get questions from file (txt).&#10;2. Parse text to question objects.&#10;3. Read/Write questions objects from/to file (bin, txt). Storage bin file.&#10;4. Create 'html' context from questions objects list.&#10;5. Write 'html' context to file (html)." />
+    <MESSAGE value="Rearranged classes" />
+    <MESSAGE value="Clean project" />
+    <MESSAGE value="Added manual How to deal with this program" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added manual How to deal with this program" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.EOFException" package="java.io" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="17" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CreateQuestionsTest$WriteObjects.ic" NAME="WriteObjects Coverage Results" MODIFIED="1681307640677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>DataExportImport.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CreateQuestionsTest$WriteQuestion.ic" NAME="WriteQuestion Coverage Results" MODIFIED="1681305061416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>DataExportImport.*</FILTER>
+    </SUITE>
+  </component>
+</project>

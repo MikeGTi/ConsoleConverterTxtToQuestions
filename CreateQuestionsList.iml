@@ -28,5 +28,6 @@
     </orderEntry>
     <orderEntry type="library" name="openjfx.javafx.base" level="application" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="commons.cli" level="application" />
   </component>
 </module>
