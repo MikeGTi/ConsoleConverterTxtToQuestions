@@ -1,16 +1,17 @@
-import DataExportImport.FileIOdata;
-import Product.Entity.Question;
-import Product.HtmlWrap.QuestionsWrapper;
-import Product.QuestionParser;
+import dataImportExport.FileIOdata;
 import org.apache.commons.cli.*;
+import product.QuestionParser;
+import product.entity.Question;
+import product.htmlWrap.QuestionsWrapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static Utils.Utils.getUniqueRandomIntAr;
+import static utils.Utils.getUniqueRandomIntAr;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -58,7 +59,7 @@ public class Main {
         //----------------------------------------------
         //Input questions text from text file block
         //inputTextFilePath = "D:\\JavaProjects\\CreateQuestionsTest\\TechTask\\Input\\билеты_тест.txt";
-        String txt = new FileIOdata().readFile(inputTextFilePath, "cp1251").toString();
+        String txt = new FileIOdata().readFile(inputTextFilePath, "cp1251");
         if (txt.isEmpty()) {
             System.err.println("File Not found\nPath: " + inputTextFilePath);
             return;
@@ -80,11 +81,20 @@ public class Main {
             resultQueTotalCount = questions.get().size();
         }
         //----------------------------------------------
-        //Random numbers block
-        Integer[] queRndNumbers = getUniqueRandomIntAr(resultQueTotalCount, 0, questions.get().size()-1);
+        //Random numbers questions list block
+        Integer[] queRndNumbers = getUniqueRandomIntAr(resultQueTotalCount, 0, questions.get().size() - 1);
+        Arrays.sort(queRndNumbers);
         ArrayList<Question> rndQueList =
                                         Arrays.stream(queRndNumbers).map(queRndNumber -> questions.get().get(queRndNumber)).collect(Collectors.toCollection(ArrayList::new));
         //rndQueList.forEach(question -> new Printer(question.toString()).printLn());
+        //----------------------------------------------
+        //Re-number questions block
+        int i = 1;
+        Iterator<Question> iterator = rndQueList.iterator();
+        while (iterator.hasNext()) {
+            Question que = iterator.next();
+            que.setNumber(i++);
+        }
         //----------------------------------------------
         //Wrapper block
         QuestionsWrapper questionsWrapper = new QuestionsWrapper(rndQueList);
@@ -99,7 +109,4 @@ public class Main {
         //FileIOdata.writeObjectToFile(Paths.get(outputFilePath).getParent() + "\\questions_" + getRandomCharsString(4) + ".bin", questions.get());
         //File questionsBinFile = File.createTempFile("questions", ".bin", new File(Paths.get(outputFilePath).getParent().toUri()));
     }
-    
-
-
 }
