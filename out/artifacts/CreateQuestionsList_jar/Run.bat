@@ -1,2 +1,2 @@
-java -jar D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\CreateQuestionsList.jar -i D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\questions_test.txt -n 19 -o D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\test1.html
+java -jar D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\CreateQuestionsList.jar -i D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\билеты_тест.txt -n 19 -o D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\test1.html -inCharSet cp1251
 pause

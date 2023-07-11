@@ -12,10 +12,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b29ad95f-a1be-490e-94a8-dd3bc075f30b" name="Changes" comment="Added manual How to deal with this program">
-      <change afterPath="$PROJECT_DIR$/DataExportImport/ArgsHandlingIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CreateQuestionsList.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CreateQuestionsList.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+    <list default="true" id="b29ad95f-a1be-490e-94a8-dd3bc075f30b" name="Changes" comment="Renamed packages, set random question numbers to ordered from 1">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/CreateQuestionsList_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/CreateQuestionsList_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataImportExport/FileIOdata.java" beforeDir="false" afterPath="$PROJECT_DIR$/dataImportExport/FileIOdata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/CreateQuestionsList_jar/CreateQuestionsList.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CreateQuestionsList_jar/CreateQuestionsList.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/CreateQuestionsList_jar/Run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CreateQuestionsList_jar/Run.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/CreateQuestionsList_jar/test1.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/CreateQuestionsList_jar/test1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/ArgsHandlingIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/ClientIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/FileIOdata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/PathRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/Printer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/RtfToTxt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/DataExportImport/UserInput.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/Enums/Difficulty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/Enums/QuestionPart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/Enums/QuestionTypes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/Question.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/Question.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/QuestionMultipleChoice.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/QuestionMultipleChoice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/QuestionMultipleSelection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/Entity/QuestionMultipleSelection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/HTMLelement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/HTMLelement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/ObjectToHTML.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/ObjectToHTML.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/Serializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/Serializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/TestObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlSerializer/TestObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlWrap/HtmlWrappable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlWrap/HtmlWrappable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlWrap/QuestionsWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/HtmlWrap/QuestionsWrapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFactory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFieldsInit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFieldsInit$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFieldsInit.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionFieldsInit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Product/QuestionParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Tests/QuestionDataForTesting$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Tests/QuestionDataForTesting$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Tests/QuestionDataForTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Tests/QuestionDataForTesting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/Tests/QuestionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/Tests/QuestionTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/FolderRequest2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI$ButtonEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI$ButtonEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI2$ButtonEventListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI2$ButtonEventListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/GUI2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/ManagerLayoutsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/ManagerLayoutsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/SearchUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/SearchUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/SearchUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CreateQuestionsList/UI/SearchUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +101,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenRunner">
+    <option name="delegateBuildToMaven" value="true" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -81,7 +130,7 @@
     "create.test.in.the.same.root": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/mboychook/.m2/repository/javafx-sdk-20.0.1/lib",
+    "last_opened_file_path": "D:/JavaProjects/CreateQuestionsTest/out/artifacts",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,7 +140,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pathVariables",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -123,12 +172,25 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="ClientIO" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DataExportImport.ClientIO" />
+      <option name="MAIN_CLASS_NAME" value="dataImportExport.ClientIO" />
       <module name="CreateQuestionsList" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\mboychook\.m2\repository\javafx-sdk-20.0.1\lib --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DataExportImport.*" />
+          <option name="PATTERN" value="dataImportExport.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileIOdata" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dataImportExport.FileIOdata" />
+      <module name="CreateQuestionsList" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dataImportExport.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,17 +203,18 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="CreateQuestionsList" />
+      <option name="PROGRAM_PARAMETERS" value="-i D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\билеты_тест.txt -n 19 -o D:\JavaProjects\CreateQuestionsTest\out\artifacts\CreateQuestionsList_jar\test1.html" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="PathRequest" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DataExportImport.PathRequest" />
+      <option name="MAIN_CLASS_NAME" value="dataImportExport.PathRequest" />
       <module name="CreateQuestionsList" />
       <option name="VM_PARAMETERS" value="--module-path C:\Users\mboychook\.m2\repository\javafx-sdk-20.0.1\lib --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DataExportImport.*" />
+          <option name="PATTERN" value="dataImportExport.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,11 +223,11 @@
       </method>
     </configuration>
     <configuration name="QuestionDataForTesting" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Tests.QuestionDataForTesting" />
+      <option name="MAIN_CLASS_NAME" value="tests.QuestionDataForTesting" />
       <module name="CreateQuestionsList" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Tests.*" />
+          <option name="PATTERN" value="tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -173,24 +236,11 @@
       </method>
     </configuration>
     <configuration name="QuestionFieldsInit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Product.QuestionFieldsInit" />
+      <option name="MAIN_CLASS_NAME" value="product.QuestionFieldsInit" />
       <module name="CreateQuestionsList" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Product.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WriteQuestion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DataExportImport.WriteQuestion" />
-      <module name="CreateQuestionsTest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DataExportImport.*" />
+          <option name="PATTERN" value="product.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -202,12 +252,12 @@
       <module name="CreateQuestionsList" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Product.Entity.Enums.*" />
+          <option name="PATTERN" value="product.entity.entityEnums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.QuestionTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.QuestionTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -217,12 +267,12 @@
       <module name="CreateQuestionsList" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Product.Entity.Enums.*" />
+          <option name="PATTERN" value="product.entity.entityEnums.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.QuestionTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.QuestionTest" />
       <option name="METHOD_NAME" value="QuestionParserTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -234,13 +284,14 @@
       <item itemvalue="Application.ClientIO" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.QuestionDataForTesting" />
-      <item itemvalue="Application.WriteQuestion" />
+      <item itemvalue="Application.FileIOdata" />
       <item itemvalue="Application.QuestionFieldsInit" />
       <item itemvalue="JUnit.QuestionTest.QuestionParserTest" />
       <item itemvalue="JUnit.QuestionTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FileIOdata" />
         <item itemvalue="Application.QuestionFieldsInit" />
       </list>
     </recent_temporary>
@@ -317,7 +368,10 @@
       <workItem from="1687853574703" duration="17713000" />
       <workItem from="1687942317163" duration="6128000" />
       <workItem from="1688050026848" duration="285000" />
-      <workItem from="1688111004318" duration="6016000" />
+      <workItem from="1688111004318" duration="9007000" />
+      <workItem from="1688208732828" duration="2149000" />
+      <workItem from="1688288972810" duration="9603000" />
+      <workItem from="1689068558760" duration="3026000" />
     </task>
     <task id="LOCAL-00001" summary="update folders list">
       <created>1681034267294</created>
@@ -417,7 +471,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687946603692</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added manual How to deal with this program">
+      <created>1688126104828</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688126104828</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Renamed packages, set random question numbers to ordered from 1">
+      <created>1688297356054</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1688297356054</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -441,7 +509,8 @@
     <MESSAGE value="Rearranged classes" />
     <MESSAGE value="Clean project" />
     <MESSAGE value="Added manual How to deal with this program" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added manual How to deal with this program" />
+    <MESSAGE value="Renamed packages, set random question numbers to ordered from 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed packages, set random question numbers to ordered from 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
