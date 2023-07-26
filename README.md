@@ -1,4 +1,4 @@
-Program for convert text questions from text file(UTF8) to html page with questions assessment.
+Console program for convert text questions from text file(UTF8) to html page with questions assessment.
 
 How to run:
 java -jar C:\Temp\CreateQuestionsList.jar D:\Temp\questions_test.txt 19
